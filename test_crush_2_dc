@@ -1,0 +1,416 @@
+# begin crush map
+tunable choose_local_tries 0
+tunable choose_local_fallback_tries 0
+tunable choose_total_tries 50
+tunable chooseleaf_descend_once 1
+tunable chooseleaf_vary_r 1
+tunable chooseleaf_stable 1
+tunable straw_calc_version 1
+tunable allowed_bucket_algs 54
+
+# devices
+device 0 osd.0 class ssd
+device 1 osd.1 class ssd
+device 2 osd.2 class ssd
+device 3 osd.3 class ssd
+device 4 osd.4 class ssd
+device 5 osd.5 class ssd
+device 6 osd.6 class ssd
+device 7 osd.7 class ssd
+device 8 osd.8 class ssd
+device 9 osd.9 class ssd
+device 10 osd.10 class ssd
+device 11 osd.11 class ssd
+device 12 osd.12 class ssd
+device 13 osd.13 class ssd
+device 14 osd.14 class ssd
+device 15 osd.15 class ssd
+device 16 osd.16 class ssd
+device 17 osd.17 class ssd
+device 18 osd.18 class ssd
+device 19 osd.19 class ssd
+device 20 osd.20 class ssd
+device 21 osd.21 class ssd
+device 22 osd.22 class ssd
+device 23 osd.23 class ssd
+device 24 osd.24 class ssd
+device 25 osd.25 class hdd
+device 26 osd.26 class ssd
+device 27 osd.27 class ssd
+device 28 osd.28 class ssd
+device 29 osd.29 class ssd
+device 30 osd.30 class hdd
+device 31 osd.31 class hdd
+device 32 osd.32 class ssd
+device 33 osd.33 class ssd
+device 34 osd.34 class ssd
+device 35 osd.35 class hdd
+device 36 osd.36 class ssd
+device 37 osd.37 class hdd
+device 38 osd.38 class hdd
+device 39 osd.39 class ssd
+device 40 osd.40 class ssd
+device 41 osd.41 class hdd
+device 42 osd.42 class hdd
+device 43 osd.43 class hdd
+device 44 osd.44 class ssd
+device 45 osd.45 class ssd
+device 46 osd.46 class hdd
+device 47 osd.47 class ssd
+device 48 osd.48 class hdd
+device 49 osd.49 class hdd
+device 50 osd.50 class hdd
+device 51 osd.51 class hdd
+device 52 osd.52 class ssd
+device 53 osd.53 class hdd
+device 54 osd.54 class hdd
+device 55 osd.55 class hdd
+device 56 osd.56 class hdd
+device 57 osd.57 class ssd
+device 58 osd.58 class ssd
+device 59 osd.59 class ssd
+device 60 osd.60 class hdd
+device 61 osd.61 class ssd
+device 62 osd.62 class hdd
+device 63 osd.63 class hdd
+device 64 osd.64 class hdd
+device 65 osd.65 class ssd
+device 66 osd.66 class ssd
+device 67 osd.67 class hdd
+device 68 osd.68 class ssd
+device 69 osd.69 class ssd
+device 70 osd.70 class ssd
+device 71 osd.71 class hdd
+device 72 osd.72 class hdd
+device 73 osd.73 class ssd
+device 74 osd.74 class ssd
+device 75 osd.75 class hdd
+device 76 osd.76 class hdd
+device 77 osd.77 class hdd
+device 78 osd.78 class hdd
+device 79 osd.79 class hdd
+device 80 osd.80 class hdd
+device 81 osd.81 class ssd
+device 82 osd.82 class hdd
+device 83 osd.83 class hdd
+device 84 osd.84 class hdd
+device 85 osd.85 class hdd
+device 86 osd.86 class hdd
+device 87 osd.87 class ssd
+device 88 osd.88 class hdd
+device 89 osd.89 class hdd
+device 90 osd.90 class hdd
+device 91 osd.91 class hdd
+device 92 osd.92 class hdd
+device 93 osd.93 class hdd
+device 94 osd.94 class hdd
+device 95 osd.95 class hdd
+device 96 osd.96 class hdd
+device 97 osd.97 class hdd
+device 98 osd.98 class hdd
+device 99 osd.99 class hdd
+device 100 osd.100 class hdd
+device 101 osd.101 class hdd
+device 102 osd.102 class hdd
+device 103 osd.103 class hdd
+device 104 osd.104 class hdd
+device 105 osd.105 class hdd
+device 106 osd.106 class hdd
+device 107 osd.107 class hdd
+device 108 osd.108 class ssd
+device 109 osd.109 class ssd
+device 110 osd.110 class ssd
+device 111 osd.111 class ssd
+device 112 osd.112 class ssd
+device 113 osd.113 class hdd
+device 114 osd.114 class ssd
+device 115 osd.115 class hdd
+device 116 osd.116 class ssd
+device 117 osd.117 class hdd
+device 118 osd.118 class ssd
+device 119 osd.119 class hdd
+
+# types
+type 0 osd
+type 1 host
+type 2 chassis
+type 3 rack
+type 4 row
+type 5 pdu
+type 6 pod
+type 7 room
+type 8 datacenter
+type 9 zone
+type 10 region
+type 11 root
+
+# buckets
+host node1 {
+	id -3		# do not change unnecessarily
+	id -4 class ssd		# do not change unnecessarily
+	id -9 class hdd		# do not change unnecessarily
+	# weight 27.94501
+	alg straw2
+	hash 0	# rjenkins1
+	item osd.10 weight 0.87329
+	item osd.18 weight 0.87329
+	item osd.2 weight 0.87329
+	item osd.27 weight 0.87329
+	item osd.35 weight 5.45799
+	item osd.44 weight 0.87329
+	item osd.46 weight 5.45799
+	item osd.57 weight 0.87329
+	item osd.60 weight 5.45799
+	item osd.65 weight 0.87329
+	item osd.67 weight 5.45799
+}
+host node0 {
+	id -5		# do not change unnecessarily
+	id -6 class ssd		# do not change unnecessarily
+	id -10 class hdd		# do not change unnecessarily
+	# weight 28.81830
+	alg straw2
+	hash 0	# rjenkins1
+	item osd.11 weight 0.87329
+	item osd.20 weight 0.87329
+	item osd.29 weight 0.87329
+	item osd.36 weight 0.87329
+	item osd.4 weight 0.87329
+	item osd.41 weight 5.45799
+	item osd.45 weight 0.87329
+	item osd.49 weight 5.45799
+	item osd.59 weight 0.87329
+	item osd.63 weight 5.45799
+	item osd.66 weight 0.87329
+	item osd.72 weight 5.45799
+}
+host node2 {
+	id -7		# do not change unnecessarily
+	id -8 class ssd		# do not change unnecessarily
+	id -11 class hdd		# do not change unnecessarily
+	# weight 28.81830
+	alg straw2
+	hash 0	# rjenkins1
+	item osd.16 weight 0.87329
+	item osd.24 weight 0.87329
+	item osd.33 weight 0.87329
+	item osd.39 weight 0.87329
+	item osd.42 weight 5.45799
+	item osd.47 weight 0.87329
+	item osd.50 weight 5.45799
+	item osd.61 weight 0.87329
+	item osd.64 weight 5.45799
+	item osd.7 weight 0.87329
+	item osd.70 weight 0.87329
+	item osd.75 weight 5.45799
+}
+host helius2 {
+	id -13		# do not change unnecessarily
+	id -14 class ssd		# do not change unnecessarily
+	id -15 class hdd		# do not change unnecessarily
+	# weight 28.81821
+	alg straw2
+	hash 0	# rjenkins1
+	item osd.17 weight 0.43660
+	item osd.26 weight 0.87329
+	item osd.34 weight 0.87329
+	item osd.40 weight 0.87329
+	item osd.43 weight 5.45799
+	item osd.48 weight 5.45799
+	item osd.58 weight 0.87329
+	item osd.62 weight 5.45799
+	item osd.68 weight 0.87329
+	item osd.73 weight 0.87329
+	item osd.79 weight 5.45799
+	item osd.8 weight 0.43660
+	item osd.81 weight 0.87329
+}
+host node3 {
+	id -16		# do not change unnecessarily
+	id -17 class ssd		# do not change unnecessarily
+	id -18 class hdd		# do not change unnecessarily
+	# weight 144.94110
+	alg straw2
+	hash 0	# rjenkins1
+	item osd.1 weight 3.49309
+	item osd.103 weight 16.37109
+	item osd.19 weight 3.49309
+	item osd.28 weight 3.49309
+	item osd.37 weight 16.37109
+	item osd.54 weight 16.37109
+	item osd.76 weight 16.37109
+	item osd.84 weight 16.37109
+	item osd.88 weight 16.37109
+	item osd.9 weight 3.49309
+	item osd.93 weight 16.37109
+	item osd.99 weight 16.37109
+}
+host node4 {
+	id -19		# do not change unnecessarily
+	id -20 class ssd		# do not change unnecessarily
+	id -21 class hdd		# do not change unnecessarily
+	# weight 144.94110
+	alg straw2
+	hash 0	# rjenkins1
+	item osd.0 weight 3.49309
+	item osd.104 weight 16.37109
+	item osd.12 weight 3.49309
+	item osd.21 weight 3.49309
+	item osd.30 weight 16.37109
+	item osd.52 weight 3.49309
+	item osd.55 weight 16.37109
+	item osd.77 weight 16.37109
+	item osd.83 weight 16.37109
+	item osd.89 weight 16.37109
+	item osd.94 weight 16.37109
+	item osd.98 weight 16.37109
+}
+host node5 {
+	id -22		# do not change unnecessarily
+	id -23 class ssd		# do not change unnecessarily
+	id -24 class hdd		# do not change unnecessarily
+	# weight 144.94110
+	alg straw2
+	hash 0	# rjenkins1
+	item osd.100 weight 16.37109
+	item osd.105 weight 16.37109
+	item osd.14 weight 3.49309
+	item osd.23 weight 3.49309
+	item osd.3 weight 3.49309
+	item osd.31 weight 16.37109
+	item osd.53 weight 16.37109
+	item osd.71 weight 16.37109
+	item osd.82 weight 16.37109
+	item osd.87 weight 3.49309
+	item osd.91 weight 16.37109
+	item osd.95 weight 16.37109
+}
+host helius4 {
+	id -25		# do not change unnecessarily
+	id -26 class ssd		# do not change unnecessarily
+	id -27 class hdd		# do not change unnecessarily
+	# weight 144.94110
+	alg straw2
+	hash 0	# rjenkins1
+	item osd.101 weight 16.37109
+	item osd.106 weight 16.37109
+	item osd.13 weight 3.49309
+	item osd.22 weight 3.49309
+	item osd.32 weight 3.49309
+	item osd.38 weight 16.37109
+	item osd.5 weight 3.49309
+	item osd.56 weight 16.37109
+	item osd.78 weight 16.37109
+	item osd.85 weight 16.37109
+	item osd.90 weight 16.37109
+	item osd.96 weight 16.37109
+}
+host helius3 {
+	id -28		# do not change unnecessarily
+	id -29 class ssd		# do not change unnecessarily
+	id -30 class hdd		# do not change unnecessarily
+	# weight 144.94110
+	alg straw2
+	hash 0	# rjenkins1
+	item osd.102 weight 16.37109
+	item osd.107 weight 16.37109
+	item osd.15 weight 3.49309
+	item osd.25 weight 16.37109
+	item osd.51 weight 16.37109
+	item osd.6 weight 3.49309
+	item osd.69 weight 3.49309
+	item osd.74 weight 3.49309
+	item osd.80 weight 16.37109
+	item osd.86 weight 16.37109
+	item osd.92 weight 16.37109
+	item osd.97 weight 16.37109
+}
+host helius1 {
+	id -31		# do not change unnecessarily
+	id -32 class ssd		# do not change unnecessarily
+	id -33 class hdd		# do not change unnecessarily
+	# weight 28.81830
+	alg straw2
+	hash 0	# rjenkins1
+	item osd.108 weight 0.87329
+	item osd.109 weight 0.87329
+	item osd.110 weight 0.87329
+	item osd.111 weight 0.87329
+	item osd.112 weight 0.87329
+	item osd.113 weight 5.45799
+	item osd.114 weight 0.87329
+	item osd.115 weight 5.45799
+	item osd.116 weight 0.87329
+	item osd.117 weight 5.45799
+	item osd.118 weight 0.87329
+	item osd.119 weight 5.45799
+}
+datacenter dc1 {
+        id -34          # do not change unnecessarily
+        id -35 class ssd                # do not change unnecessarily
+        id -36 class hdd                # do not change unnecessarily
+        # weight 144.09132
+        alg straw2
+        hash 0  # rjenkins1
+        item node0 weight 28.81830 
+        item node1 weight 28.81830
+        item node2 weight 28.81821
+        item helius1 weight 28.81830
+        item helius2 weight 28.81821
+}
+datacenter dc2 {
+        id -37          # do not change unnecessarily
+        id -38 class ssd                # do not change unnecessarily
+        id -39 class hdd                # do not change unnecessarily
+        # weight 724.7055
+        alg straw2
+        hash 0  # rjenkins1
+        item node3 weight 144.94110
+        item node4 weight 144.94110
+        item node5 weight 144.94110
+        item helius3 weight 144.94110
+        item helius4 weight 144.94110
+}
+
+
+root default {
+	id -1		# do not change unnecessarily
+	id -2 class ssd		# do not change unnecessarily
+	id -12 class hdd		# do not change unnecessarily
+	# weight 867.92358
+	alg straw2
+	hash 0	# rjenkins1
+	item dc1 weight 144.09132
+	item dc2 weight 724.7055
+}
+
+# rules
+rule replicated_rule {
+	id 0
+	type replicated
+	step take default
+	step chooseleaf firstn 0 type host
+	step emit
+}
+rule SSD_Rule {
+	id 1
+        type replicated
+        step take dc1 class ssd
+        step chooseleaf firstn 2 type osd
+        step emit
+        step take dc2 class ssd
+        step chooseleaf firstn 1 type osd
+        step emit
+}
+rule volume_hdd {
+	id 2
+        type replicated
+        step take dc1 class hdd
+        step chooseleaf firstn 2 type osd
+        step emit
+        step take dc2 class hdd
+        step chooseleaf firstn 1 type osd
+        step emit
+}
+
+# end crush map
