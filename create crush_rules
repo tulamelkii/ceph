@@ -1,0 +1,75 @@
+create dc1 and dc2 for crushmap 
+ceph osd getcrushmap -o {compiled-crushmap-filename}                           #first get crush 
+crushtool -d {compiled-crushmap-filename} -o {decompiled-crushmap-filename}    #second decompail file 
+cp    <decompiled-crushmap-filename>  <decompiled-crushmap-filename>.bk        #copy decompile file ceph  (backup we want rollingupdate to crush) 
+crushtool -c {decompiled-crushmap-filename} -o {compiled-crushmap-filename}    #third recomale rules 
+ceph osd setcrushmap -i {compiled-crushmap-filename}                           #set crush rules for ceph 
+--------------------------------------------------------------------------------------- 
+crusch rules add DC1 +DC2
+________________________________________________________________________________ 
+datacenter dc1 {
+        id -34          # do not change unnecessarily
+        id -35 class ssd                # do not change unnecessarily
+        id -36 class hdd                # do not change unnecessarily
+        # weight 144.09132
+        alg straw2
+        hash 0  # rjenkins1
+        item node0 weight 28.81830 
+        item node1 weight 28.81830
+        item node2 weight 28.81821
+        item helius1 weight 28.81830
+        item helius2 weight 28.81821
+}
+datacenter dc2 {
+        id -37          # do not change unnecessarily
+        id -38 class ssd                # do not change unnecessarily
+        id -39 class hdd                # do not change unnecessarily
+        # weight 724.7055
+        alg straw2
+        hash 0  # rjenkins1
+        item node3 weight 144.94110
+        item node4 weight 144.94110
+        item node5 weight 144.94110
+        item helius3 weight 144.94110
+        item helius4 weight 144.94110
+}
+
+root default {
+	id -1		# do not change unnecessarily
+	id -2 class ssd		# do not change unnecessarily
+	id -12 class hdd		# do not change unnecessarily
+	# weight 867.92358
+	alg straw2
+	hash 0	# rjenkins1
+	item dc1 weight 144.09132
+	item dc2 weight 724.7055
+}
+
+# rules
+rule replicated_rule {
+	id 0
+	type replicated
+	step take default
+	step chooseleaf firstn 0 type host
+	step emit
+}
+rule SSD_Rule {
+	id 1
+        type replicated
+        step take dc1 class ssd
+        step chooseleaf firstn 2 type osd
+        step emit
+        step take dc2 class ssd
+        step chooseleaf firstn 1 type osd
+        step emit
+}
+rule volume_hdd {
+	id 2
+        type replicated
+        step take dc1 class hdd
+        step chooseleaf firstn 2 type osd
+        step emit
+        step take dc2 class hdd
+        step chooseleaf firstn 1 type osd
+        step emit
+}
